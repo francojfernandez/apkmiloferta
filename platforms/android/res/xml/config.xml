@@ -13,5 +13,8 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="http://api.gatocurioso.com.ar/*" />
     <preference name="loglevel" value="DEBUG" />
 </widget>
