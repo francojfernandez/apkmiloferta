@@ -44,6 +44,7 @@
 	    </style>
     </head>
     <body>
+    	<div id="wrapper">
         <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
 	        <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
 		        <div class="mdl-layout__header-row">
@@ -86,17 +87,11 @@
 			          </div>
 			        </header>
 			        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-			          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
-			          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Inbox</a>
-			          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">delete</i>Trash</a>
-			          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Spam</a>
-			          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Forums</a>
-			          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Updates</a>
-			          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Promos</a>
-			          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Purchases</a>
-			          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Social</a>
-			          <div class="mdl-layout-spacer"></div>
-			          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
+			          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Inicio</a>			          
+			          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Mis Ofertas</a>
+			          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Mensajes</a>
+			          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Plan</a>
+			          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Cerrar Seccion</a>
 			        </nav>
 		    </div>
 	    <main class="mdl-layout__content mdl-color--grey-100">
@@ -104,7 +99,8 @@
 	          					          
 	        </div>
 	    </main>
-    </div>
+    	</div>
+    	</div>
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" style="position: fixed; left: -1000px; height: -1000px;">
         <defs>
           <mask id="piemask" maskContentUnits="objectBoundingBox">
@@ -153,21 +149,28 @@
         </defs>
       </svg>
       	<script src="material.min.js"></script>
+      	<script src="iscroll-lite.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" charset="utf-8">
+        	var myScroll;
+			function loaded() {
+			    myScroll = new IScroll('#wrapper');
+			}
         	window.onload = function(){
         		document.addEventListener("deviceready",function(){
                     var xhr = new XMLHttpRequest(); 
-                    //xhr.open("GET","http://api.gatocurioso.com.ar/php-code/listado.php",true);
                     xhr.open("GET","http://api.gatocurioso.com.ar/php-code/ofertas.php",true);
+                    //xhr.open("GET","../deoferta/modelos/api/ofertas.php",true);
                     xhr.send();                 
                     xhr.onreadystatechange = function(){
                         if(xhr.readyState == 4 && xhr.status == 200){
                             document.getElementById("ofertas").innerHTML = xhr.responseText;
                         }
                     };
+                    //loaded();
+                    
         		},false);
-   
+					//loaded();
         	}
         </script>
     </body>
